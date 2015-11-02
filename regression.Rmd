@@ -1,0 +1,36 @@
+---
+output: word_document
+---
+## Regression- Example with R- Markdown
+### By Mandar Gadkari
+
+## Reading the data. 
+```{r}
+setwd("C:/Courses/BigData")
+myData<- read.csv ("hw1_data.csv")
+summary(lm(Ozone ~ Temp + Wind, data = myData))
+```
+
+## Constructing Linear Equation.
+### Ozone = 1.8*Temp - 3.1*Wind - 71
+
+## Making Inferences.
+#### R-squared:  0.5687
+#### Ozone is directly proportional to Temperature.
+#### Ozone is inversely proportional to Wind.
+#### Wind impacts more than Temperature.
+
+## Calculate Pearsons Coeffcients.
+```{r}
+cor(myData)
+```
+## Draws a correlation plot
+```{r}
+pairs(myData)
+```
+## Confidence Interval.
+```{r}
+
+model=lm(Ozone ~ Temp+Wind+Temp*Wind, data = myData)
+confint(model,conf.level=0.95)
+```
